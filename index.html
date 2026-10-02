@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Wanrou Chen — Accounting student at Rutgers Business School. Education, skills, and professional experience.">
+  <meta name="description" content="Wanrou Chen — Accounting undergraduate at Rutgers Business School. Explore my education, skills, and experience.">
+  <meta name="theme-color" content="#faf7f0">
   <title>Wanrou Chen | Portfolio</title>
 
   <style>
@@ -44,7 +45,13 @@
       outline-offset: 5px;
     }
 
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
     .container {
+      width: 100%;
       max-width: 1160px;
       margin: 0 auto;
       padding: 0 48px;
@@ -65,6 +72,7 @@
     }
 
     /* Navigation */
+
     header {
       border-bottom: 1px solid var(--border);
     }
@@ -82,12 +90,13 @@
       font-weight: 700;
       letter-spacing: 2px;
       text-decoration: none;
+      white-space: nowrap;
     }
 
     .nav-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 28px;
+      gap: 26px;
     }
 
     .nav-links a {
@@ -100,12 +109,17 @@
     }
 
     /* Introduction */
+
     .hero {
       display: grid;
-      grid-template-columns: 1.4fr 1fr;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
       align-items: center;
       gap: 64px;
-      padding: 80px 0;
+      padding: 76px 0;
+    }
+
+    .hero > * {
+      min-width: 0;
     }
 
     .eyebrow,
@@ -113,7 +127,7 @@
       color: var(--gold);
       font-size: 12px;
       font-weight: 700;
-      letter-spacing: 2px;
+      letter-spacing: 1.6px;
       text-transform: uppercase;
     }
 
@@ -124,10 +138,10 @@
     h1 {
       margin: 0 0 28px;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(40px, 5vw, 62px);
+      font-size: clamp(40px, 4.7vw, 58px);
       font-weight: 400;
-      line-height: 1.1;
-      letter-spacing: -2px;
+      line-height: 1.12;
+      letter-spacing: -1.6px;
     }
 
     h1 span {
@@ -172,16 +186,25 @@
     }
 
     .profile {
+      width: 100%;
+      max-width: 390px;
       margin: 0;
+      justify-self: end;
+    }
+
+    .photo-frame {
+      width: 100%;
+      aspect-ratio: 4 / 4.6;
+      overflow: hidden;
+      border-radius: 190px 190px 5px 5px;
+      background: #e5e1da;
     }
 
     .profile-photo {
-      display: block;
       width: 100%;
-      aspect-ratio: 4 / 4.6;
+      height: 100%;
       object-fit: cover;
       object-position: center 30%;
-      border-radius: 190px 190px 5px 5px;
     }
 
     .profile figcaption {
@@ -200,7 +223,8 @@
       font-size: 14px;
     }
 
-    /* Shared section styles */
+    /* Shared sections */
+
     .section {
       padding: 56px 0;
       border-top: 1px solid var(--border);
@@ -227,9 +251,10 @@
     }
 
     /* Education */
+
     .education-content {
       display: grid;
-      grid-template-columns: 1.4fr 1fr;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
       align-items: center;
       gap: 30px;
     }
@@ -261,10 +286,18 @@
     }
 
     /* Skills */
+
     .skills-grid {
       display: grid;
-      grid-template-columns: 1.3fr 1.2fr 0.8fr;
+      grid-template-columns:
+        minmax(0, 1.3fr)
+        minmax(0, 1.2fr)
+        minmax(0, 0.8fr);
       gap: 30px;
+    }
+
+    .skill-group {
+      min-width: 0;
     }
 
     .skill-group h3 {
@@ -283,17 +316,20 @@
     }
 
     .skill-tags li {
+      max-width: 100%;
       padding: 9px 12px;
       background: var(--white);
       border: 1px solid var(--border);
       font-size: 14px;
       line-height: 1.45;
+      overflow-wrap: anywhere;
     }
 
     /* Experience */
+
     .experience-item {
       display: grid;
-      grid-template-columns: 45px 235px 1fr;
+      grid-template-columns: 40px 225px minmax(0, 1fr);
       gap: 24px;
       padding: 30px 0;
       border-bottom: 1px solid var(--border);
@@ -308,6 +344,10 @@
       color: var(--gold);
       font-family: Georgia, serif;
       font-size: 24px;
+    }
+
+    .experience-info {
+      min-width: 0;
     }
 
     .experience-info h3 {
@@ -330,6 +370,7 @@
     }
 
     .experience-description {
+      min-width: 0;
       margin: 0;
       padding-left: 18px;
       color: var(--muted);
@@ -345,6 +386,7 @@
     }
 
     /* Footer */
+
     footer {
       padding: 38px 0;
       background: var(--navy);
@@ -379,17 +421,22 @@
     }
 
     /* Tablet */
+
     @media (max-width: 900px) {
       .container {
         padding: 0 30px;
       }
 
       .hero {
-        gap: 36px;
+        gap: 32px;
+      }
+
+      h1 {
+        font-size: 43px;
       }
 
       .skills-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .skill-group:last-child {
@@ -397,7 +444,7 @@
       }
 
       .experience-item {
-        grid-template-columns: 30px 190px 1fr;
+        grid-template-columns: 28px 180px minmax(0, 1fr);
         gap: 16px;
       }
 
@@ -407,7 +454,8 @@
     }
 
     /* Mobile */
-    @media (max-width: 640px) {
+
+    @media (max-width: 680px) {
       .container {
         padding: 0 22px;
       }
@@ -421,18 +469,18 @@
       }
 
       .nav-links {
-        gap: 20px;
+        gap: 18px;
       }
 
       .hero {
-        grid-template-columns: 1fr;
-        padding: 44px 0;
-        gap: 32px;
+        grid-template-columns: minmax(0, 1fr);
+        padding: 42px 0;
+        gap: 34px;
       }
 
       h1 {
-        font-size: 43px;
-        letter-spacing: -1.4px;
+        font-size: clamp(34px, 8.5vw, 46px);
+        letter-spacing: -1px;
       }
 
       .personal-statement {
@@ -440,12 +488,11 @@
       }
 
       .profile {
-        width: 100%;
         max-width: 350px;
-        margin: 0 auto;
+        justify-self: center;
       }
 
-      .profile-photo {
+      .photo-frame {
         aspect-ratio: 4 / 4.3;
       }
 
@@ -470,7 +517,7 @@
       }
 
       .education-content {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 18px;
       }
 
@@ -479,7 +526,7 @@
       }
 
       .skills-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 26px;
       }
 
@@ -488,7 +535,7 @@
       }
 
       .experience-item {
-        grid-template-columns: 28px 1fr;
+        grid-template-columns: 28px minmax(0, 1fr);
         gap: 12px;
       }
 
@@ -575,14 +622,14 @@
       </div>
 
       <figure class="profile">
-        <img
-          class="profile-photo"
-          src="portrait.jpg"
-          alt="Portrait of Wanrou Chen"
-          width="1086"
-          height="1462"
-          fetchpriority="high"
-        >
+        <div class="photo-frame">
+          <img
+            class="profile-photo"
+            src="./IMG_9868.JPG"
+            alt="Portrait of Wanrou Chen"
+            fetchpriority="high"
+          >
+        </div>
 
         <figcaption>
           <p class="profile-name">Wanrou Chen</p>
@@ -776,6 +823,7 @@
         <a href="mailto:wc700@scarletmail.rutgers.edu">
           Email
         </a>
+
         <a
           href="https://www.linkedin.com/in/wanrou-chen-4328863b1"
           target="_blank"
@@ -783,6 +831,7 @@
         >
           LinkedIn
         </a>
+
         <a href="#about">Back to top</a>
       </div>
     </div>
