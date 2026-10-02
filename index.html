@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Wanrou Chen — Accounting undergraduate at Rutgers Business School. Explore my education, skills, and experience.">
+  <meta name="description" content="Wanrou Chen — Accounting undergraduate at Rutgers Business School. Education, skills, and professional and community experience.">
   <meta name="theme-color" content="#faf7f0">
   <title>Wanrou Chen | Portfolio</title>
 
@@ -40,7 +40,8 @@
       text-underline-offset: 5px;
     }
 
-    a:focus-visible {
+    a:focus-visible,
+    summary:focus-visible {
       outline: 3px solid var(--gold);
       outline-offset: 5px;
     }
@@ -346,7 +347,8 @@
       font-size: 24px;
     }
 
-    .experience-info {
+    .experience-info,
+    .experience-body {
       min-width: 0;
     }
 
@@ -370,7 +372,6 @@
     }
 
     .experience-description {
-      min-width: 0;
       margin: 0;
       padding-left: 18px;
       color: var(--muted);
@@ -383,6 +384,157 @@
 
     .experience-description li:last-child {
       margin-bottom: 0;
+    }
+
+    /* Expandable project details */
+
+    .project-details {
+      margin-top: 22px;
+    }
+
+    .project-details summary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 44px;
+      max-width: 100%;
+      padding: 9px 15px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--navy);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      list-style: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .project-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .project-details summary::after {
+      content: "+";
+      color: var(--gold);
+      font-size: 20px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .project-details[open] summary::after {
+      content: "−";
+    }
+
+    .project-details summary:hover,
+    .project-details[open] summary {
+      background: var(--white);
+      border-color: var(--gold);
+    }
+
+    .detail-panel {
+      margin-top: 18px;
+      padding: 25px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+    }
+
+    .detail-label {
+      margin: 0 0 10px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .detail-panel h4 {
+      margin: 0 0 15px;
+      font-family: Georgia, serif;
+      font-size: 25px;
+      font-weight: 400;
+      line-height: 1.3;
+    }
+
+    .detail-panel h5 {
+      margin: 22px 0 8px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .detail-panel p {
+      margin: 0 0 14px;
+      color: var(--muted);
+    }
+
+    .detail-panel ul {
+      margin: 0;
+      padding-left: 19px;
+      color: var(--muted);
+    }
+
+    .detail-panel li {
+      margin-bottom: 8px;
+    }
+
+    .detail-panel li:last-child {
+      margin-bottom: 0;
+    }
+
+    .detail-panel .skills-applied {
+      margin-top: 22px;
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+
+    .skills-applied strong {
+      color: var(--navy);
+    }
+
+    .related-resources {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+
+    .related-resources h5 {
+      margin: 0 0 12px;
+    }
+
+    .resource-link {
+      display: block;
+      padding: 12px 0;
+      text-decoration: none;
+    }
+
+    .resource-link + .resource-link {
+      border-top: 1px solid var(--border);
+    }
+
+    .resource-source {
+      display: block;
+      color: var(--gold);
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .resource-title {
+      display: block;
+      color: var(--navy);
+      font-size: 14px;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .resource-link:hover .resource-title {
+      color: var(--gold);
+    }
+
+    .related-resources .resource-note {
+      margin: 12px 0 0;
+      font-size: 12px;
+      line-height: 1.6;
     }
 
     /* Footer */
@@ -539,12 +691,20 @@
         gap: 12px;
       }
 
-      .experience-description {
+      .experience-body {
         grid-column: 2;
       }
 
       .experience-info h3 {
         font-size: 24px;
+      }
+
+      .detail-panel {
+        padding: 18px;
+      }
+
+      .detail-panel h4 {
+        font-size: 22px;
       }
 
       .footer-content {
@@ -558,7 +718,8 @@
         scroll-behavior: auto;
       }
 
-      .button {
+      .button,
+      .project-details summary {
         transition: none;
       }
     }
@@ -727,6 +888,7 @@
         <p class="section-label">03 / In Practice</p>
       </div>
 
+      <!-- COMMUNITY WORK -->
       <article class="experience-item">
         <span class="experience-number" aria-hidden="true">01</span>
 
@@ -738,48 +900,207 @@
           </p>
         </div>
 
-        <ul class="experience-description">
-          <li>
-            Contributed more than 60 hours to community events and
-            local programs, supporting event setup, operations,
-            and cleanup.
-          </li>
-          <li>
-            Coordinated logistics for more than 10 activities to
-            keep events organized and on schedule.
-          </li>
-          <li>
-            Led groups of 6–8 volunteers, assigning tasks and
-            helping the team meet event deadlines.
-          </li>
-        </ul>
+        <div class="experience-body">
+          <ul class="experience-description">
+            <li>
+              Contributed more than 60 hours to community events and
+              local programs, supporting event setup, operations,
+              and cleanup.
+            </li>
+            <li>
+              Coordinated logistics for more than 10 activities to
+              keep events organized and on schedule.
+            </li>
+            <li>
+              Led groups of 6–8 volunteers, assigning tasks and
+              helping the team meet event deadlines.
+            </li>
+          </ul>
+
+          <details class="project-details">
+            <summary>View Project Details</summary>
+
+            <div class="detail-panel">
+              <p class="detail-label">Community Event Project</p>
+              <h4>Chinatown Cultural Celebrations</h4>
+
+              <p>
+                Supported traditional Chinese holiday celebrations
+                in Philadelphia’s Chinatown, including Mid-Autumn
+                Festival and Lunar New Year activities. These events
+                brought people together through cultural performances,
+                food, and night-market activities.
+              </p>
+
+              <h5>Project Purpose</h5>
+              <p>
+                Share Chinese holiday traditions and create welcoming
+                opportunities for residents and visitors to participate
+                in community life.
+              </p>
+
+              <h5>My Contribution</h5>
+              <ul>
+                <li>
+                  Contributed ideas for activities that introduced
+                  Chinese traditions and encouraged participation.
+                </li>
+                <li>
+                  Assisted with event organization, setup, and
+                  on-site coordination.
+                </li>
+                <li>
+                  Worked with fellow volunteers to support activities
+                  and help events run smoothly.
+                </li>
+              </ul>
+
+              <p class="skills-applied">
+                <strong>Skills Applied:</strong>
+                Event Coordination · Team Collaboration ·
+                Communication · Time Management
+              </p>
+
+              <div class="related-resources">
+                <h5>Related Coverage &amp; Background</h5>
+
+                <a
+                  class="resource-link"
+                  href="https://www.aaunited.org/maf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="resource-source">
+                    Asian Americans United · Official Event Page
+                  </span>
+                  <span class="resource-title">
+                    Chinatown Mid-Autumn Festival
+                  </span>
+                </a>
+
+                <a
+                  class="resource-link"
+                  href="https://www.phillyvoice.com/yeshi-chinatown-night-market-2023/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="resource-source">
+                    PhillyVoice · October 2023
+                  </span>
+                  <span class="resource-title">
+                    YèShì Chinatown Night Market Returns
+                  </span>
+                </a>
+
+                <p class="resource-note">
+                  These sources provide event background and photographs.
+                  They do not document my individual participation or
+                  confirm which editions I volunteered at.
+                </p>
+              </div>
+            </div>
+          </details>
+        </div>
       </article>
 
+      <!-- ASIAN AMERICANS UNITED -->
       <article class="experience-item">
         <span class="experience-number" aria-hidden="true">02</span>
 
         <div class="experience-info">
-          <h3>Asian American United</h3>
+          <h3>Asian Americans United</h3>
           <p class="experience-role">Youth Program Participant</p>
           <p class="experience-date">June 2023 – August 2023</p>
         </div>
 
-        <ul class="experience-description">
-          <li>
-            Facilitated group discussions on Asian American
-            social issues and community advocacy.
-          </li>
-          <li>
-            Collaborated with peers to plan and carry out
-            community awareness activities.
-          </li>
-          <li>
-            Proposed and implemented ideas for discussions and
-            activities to encourage participation and inclusion.
-          </li>
-        </ul>
+        <div class="experience-body">
+          <ul class="experience-description">
+            <li>
+              Facilitated group discussions on Asian American
+              social issues and community advocacy.
+            </li>
+            <li>
+              Collaborated with peers to plan and carry out
+              community awareness activities.
+            </li>
+            <li>
+              Proposed and implemented ideas for discussions and
+              activities to encourage participation and inclusion.
+            </li>
+          </ul>
+
+          <details class="project-details">
+            <summary>View Project Details</summary>
+
+            <div class="detail-panel">
+              <p class="detail-label">Youth Community Project</p>
+              <h4>Chinatown Community Preservation</h4>
+
+              <p>
+                Participated in a community project focused on
+                preserving Philadelphia’s Chinatown and understanding
+                how proposed development could affect its residents,
+                small businesses, and cultural identity.
+              </p>
+
+              <h5>Project Context</h5>
+              <p>
+                The project took place during community discussions
+                about a proposed basketball arena near Chinatown.
+                It provided an opportunity to consider local concerns
+                and the relationship between development, business
+                activity, and neighborhood preservation.
+              </p>
+
+              <h5>My Contribution</h5>
+              <ul>
+                <li>
+                  Participated in group discussions about community
+                  concerns and the importance of preserving Chinatown.
+                </li>
+                <li>
+                  Worked with peers on community awareness activities.
+                </li>
+                <li>
+                  Contributed ideas to encourage discussion,
+                  participation, and understanding of local issues.
+                </li>
+              </ul>
+
+              <p class="skills-applied">
+                <strong>Skills Applied:</strong>
+                Communication · Team Collaboration ·
+                Community Engagement
+              </p>
+
+              <div class="related-resources">
+                <h5>Related Coverage &amp; Background</h5>
+
+                <a
+                  class="resource-link"
+                  href="https://whyy.org/articles/sixers-arena-proposal-opponents-councilmember-mark-squilla-zoning-legislation/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="resource-source">
+                    WHYY · July 2023
+                  </span>
+                  <span class="resource-title">
+                    Reporting on Chinatown’s Response to the Arena Proposal
+                  </span>
+                </a>
+
+                <p class="resource-note">
+                  This article provides historical context for the
+                  community issue; it is not coverage of my individual work.
+                </p>
+              </div>
+            </div>
+          </details>
+        </div>
       </article>
 
+      <!-- TOUS LES JOURS -->
       <article class="experience-item">
         <span class="experience-number" aria-hidden="true">03</span>
 
@@ -791,21 +1112,64 @@
           </p>
         </div>
 
-        <ul class="experience-description">
-          <li>
-            Served more than 200 customers per shift in a
-            fast-paced bakery, assisting with orders and
-            delivering efficient customer service.
-          </li>
-          <li>
-            Processed cash register transactions and balanced
-            receipts with attention to accuracy.
-          </li>
-          <li>
-            Collaborated with team members to replenish supplies
-            and maintain smooth operations during peak hours.
-          </li>
-        </ul>
+        <div class="experience-body">
+          <ul class="experience-description">
+            <li>
+              Served more than 200 customers per shift in a
+              fast-paced bakery, assisting with orders and
+              delivering efficient customer service.
+            </li>
+            <li>
+              Processed cash register transactions and balanced
+              receipts with attention to accuracy.
+            </li>
+            <li>
+              Collaborated with team members to replenish supplies
+              and maintain smooth operations during peak hours.
+            </li>
+          </ul>
+
+          <details class="project-details">
+            <summary>View Experience Details</summary>
+
+            <div class="detail-panel">
+              <p class="detail-label">Workplace Experience</p>
+              <h4>Customer Service &amp; Daily Operations</h4>
+
+              <p>
+                Supported day-to-day service in a busy bakery,
+                balancing customer orders, payment processing,
+                beverage preparation, and team responsibilities.
+              </p>
+
+              <h5>Examples of My Work</h5>
+              <ul>
+                <li>
+                  Assisted customers with orders and product questions
+                  while maintaining efficient service during busy shifts.
+                </li>
+                <li>
+                  Used the cash register to process payments and
+                  handled receipts carefully to minimize errors.
+                </li>
+                <li>
+                  Prepared beverages according to store recipes and
+                  quality standards.
+                </li>
+                <li>
+                  Replenished supplies and coordinated with coworkers
+                  to support service during peak periods.
+                </li>
+              </ul>
+
+              <p class="skills-applied">
+                <strong>Skills Applied:</strong>
+                Customer Service · Cash Handling ·
+                POS Systems · Time Management · Team Collaboration
+              </p>
+            </div>
+          </details>
+        </div>
       </article>
     </section>
   </main>
